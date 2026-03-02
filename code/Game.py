@@ -9,6 +9,10 @@ class Game:
         self.window = pygame.display.set_mode(size=(WIN_WIDTH, WIN_HEIGHT))
 
     def run(self):
+        # Adicionando a música
+        pygame.mixer_music.load('./asset/music/Menu.mp3')
+        pygame.mixer_music.play(-1)
+
         while True:
             menu = Menu(self.window)
             menu.run()

@@ -5,7 +5,7 @@ class Menu:
     def __init__(self, window):
         self.window = window
         # 1- carrego a imagem
-        self.surf = pygame.image.load('./asset/MenuBg.png')
+        self.surf = pygame.image.load('./asset/images/MenuBg.png')
         # 2- posiciono a imagem
         self.rect = self.surf.get_rect(left=0, top=0)
 
