@@ -10,8 +10,18 @@ class Menu:
         self.rect = self.surf.get_rect(left=0, top=0)
 
     def run(self):
-        # 3- desenha a imagem no retângulo
-        self.window.blit(source=self.surf, dest=self.rect)
-        # 4- Atualiza para a imagem aparecer
-        pygame.display.flip()
-        pass
+        # Adicionando a música
+        pygame.mixer_music.load('./asset/music/Menu.mp3')
+        pygame.mixer_music.play(-1)
+
+        while True:
+            # 3- desenha a imagem no retângulo
+            self.window.blit(source=self.surf, dest=self.rect)
+            # 4- Atualiza para a imagem aparecer
+            pygame.display.flip()
+
+            # Check for all events
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit() #Close window
+                    quit() #End pygame
