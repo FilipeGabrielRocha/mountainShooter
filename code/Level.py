@@ -10,6 +10,7 @@ from pygame.surface import Surface
 from code.Const import COLOR_WHITE, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
+from code.EntityMediator import EntityMediator
 
 
 class Level:
@@ -44,8 +45,11 @@ class Level:
 
             self.level_text(14, f'{self.name} - Timeout:  {self.timeout / 1000 :.1f}s', COLOR_WHITE, (10, 5))
             self.level_text(14, f'FPS: {clock.get_fps() :.0f}', COLOR_WHITE, (10, WIN_HEIGHT - 35))
-            self.level_text(14, f'Entidades:  {len(self.entity_list)}', COLOR_WHITE, (10, WIN_HEIGHT - 20))
+            self.level_text(14, f'Entidades:  {len(self.entity_list)-14}', COLOR_WHITE, (10, WIN_HEIGHT - 20))
             pygame.display.flip()
+            #collision
+            EntityMediator.verify_collision(entity_list=self.entity_list)
+            EntityMediator.verify_health(entity_list=self.entity_list)
         pass
 
     def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
